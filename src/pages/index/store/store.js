@@ -1,22 +1,18 @@
 import {makeAutoObservable} from "mobx";
 import {createContext} from "react";
+import {categories} from "../../../constants/category";
 
 class Store {
   // state
-  count = 0
+  category = categories[0]
 
   constructor() {
     makeAutoObservable(this)
   }
 
   // actions
-  increment() {
-    console.log(1)
-    this.count++
-  }
-
-  set(value) {
-    this.count = value
+  setCategory(value) {
+    this.category = value
   }
 
 }

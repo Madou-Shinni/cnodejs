@@ -92,7 +92,8 @@ export default defineConfig(async (merge, { command, mode }) => {
             generateScopedName: '[name]__[local]___[hash:base64:5]'
           }
         }
-      }
+      },
+      esnextModules: ['taro-ui']
     },
     rn: {
       appName: 'taroDemo',

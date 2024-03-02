@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import Taro from "@tarojs/taro";
 
-const baseUrl = 'https://cnodejs.org/api/v1'
+const baseUrl = process.env.TARO_APP_BASE_URL
 
 export const useTaroRequest = (request,config) => {
   request = {
