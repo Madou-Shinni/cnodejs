@@ -53,9 +53,6 @@ dependencies:
   '@tarojs/taro':
     specifier: 3.6.23
     version: 3.6.23(@tarojs/helper@3.6.23)(@tarojs/runtime@3.6.23)(@types/react@18.2.61)(postcss@8.4.35)
-  axios:
-    specifier: ^1.6.7
-    version: 1.6.7
   mobx:
     specifier: ^6.12.0
     version: 6.12.0
@@ -5651,16 +5648,6 @@ packages:
     resolution: {integrity: sha512-NmWvPnx0F1SfrQbYwOi7OeaNGokp9XhzNioJ/CSBs8Qa4vxug81mhJEAVZwxXuBmYB5KDRfMq/F3RR0BIU7sWg==}
     dev: true
 
-  /axios@1.6.7:
-    resolution: {integrity: sha512-/hDJGff6/c7u0hDkvkGxR/oy6CbCs8ziCsC7SqmhjfozqiJGc8Z11wrv9z9lYfY4K8l+H9TpjcMDX0xOZmx+RA==}
-    dependencies:
-      follow-redirects: 1.15.5
-      form-data: 4.0.0
-      proxy-from-env: 1.1.0
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /babel-core@7.0.0-bridge.0(@babel/core@7.24.0):
     resolution: {integrity: sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==}
     peerDependencies:
@@ -9388,6 +9375,7 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: true
 
   /fontfaceobserver@2.3.0:
     resolution: {integrity: sha512-6FPvD/IVyT4ZlNe7Wcn5Fb/4ChigpucKYSvD6a+0iMoLn2inpo711eyIcKjmDtE5XNcgAkSH9uN/nfAeZzHEfg==}
@@ -9440,6 +9428,7 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+    dev: true
 
   /forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -11535,7 +11524,7 @@ packages:
       '@babel/register': 7.23.7(@babel/core@7.24.0)
       babel-core: 7.0.0-bridge.0(@babel/core@7.24.0)
       colors: 1.4.0
-      flow-parser: 0.121.0
+      flow-parser: 0.206.0
       graceful-fs: 4.2.11
       micromatch: 3.1.10
       neo-async: 2.6.2
@@ -14484,10 +14473,6 @@ packages:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
     dev: true
-
-  /proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-    dev: false
 
   /prr@1.0.1:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}

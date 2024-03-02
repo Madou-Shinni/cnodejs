@@ -19,9 +19,9 @@ const Topic = ({avatar,replayCount,visits,tab,good,title,createAt}) => {
   </View>
 }
 
-const TopicList = ({topics}) => {
-  return <View className={'index'}>
-    <AtList className={'flex flex-col justify-center gap-y-[10px] pt-[20px] px-[20px]'}>
+const TopicList = ({topics,className}) => {
+  return <View className={`index ${className ? className : ''}`}>
+    <AtList className={'flex flex-col justify-center gap-y-[20px] pt-[20px] px-[20px]'}>
       {topics?.map((item)=>(
         <Topic key={item.id} avatar={item.author.avatar_url} replayCount={item.reply_count} visits={item.visit_count} tab={categoriesMap[item.tab]} good={item.good} title={item.title} createAt={item.create_at} />
       ))}
@@ -30,3 +30,4 @@ const TopicList = ({topics}) => {
 }
 
 export default TopicList
+export {Topic}

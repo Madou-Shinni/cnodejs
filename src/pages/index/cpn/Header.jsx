@@ -4,29 +4,11 @@ import {AtDrawer, AtIcon, AtList, AtListItem} from "taro-ui";
 import {useContext, useEffect, useState} from "react";
 import {categories} from "../../../constants/category";
 import {context} from "../store/store";
-import {getTopics} from "../../../api/topic";
-import Taro from "@tarojs/taro";
 
 
 const Header = observer(() => {
   const [show, setShow] = useState(false)
   const store = useContext(context)
-  const {data,isLoading,mutate} = getTopics({tab:store.category.key});
-
-  useEffect(() => {
-    mutate()
-  }, [store.category]);
-
-  if (!data && isLoading) {
-    Taro.showLoading({
-      title: 'loading',
-      mask: false
-    })
-  }
-
-  if (data) {
-    Taro.hideLoading()
-  }
 
   const onClose = () => {
     setShow(false)

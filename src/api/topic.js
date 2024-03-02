@@ -1,4 +1,5 @@
 import {useTaroRequest} from "../hooks/useRequest/useTaroRequest";
+import useInfiniteRequest from "../hooks/useRequest/useInfiniteRequest";
 
 const defaultTopicsData = {
   page: 1,
@@ -12,5 +13,13 @@ export const getTopics = (data) => {
     url: "/topics",
     method: 'get',
     data
+  })
+}
+
+export const getTopicsInfinite = (data) => {
+  data = {...defaultTopicsData,...data}
+  return useInfiniteRequest({
+    url: `/topics?tab=${data.tab}&mdrender=${data.mdrender}`,
+    method: 'get',
   })
 }
