@@ -12,7 +12,7 @@ const ReplayCount = ({replayCount, visits}) => {
 }
 const Topic = ({avatar,replayCount,visits,tab,good,title,createAt}) => {
   return <View className={'flex flex-nowrap items-center gap-x-[10px] active:bg-[#e9ecef]'}>
-    <AtAvatar image={avatar} />
+    <AtAvatar image={avatar} className={'shrink-0'} />
     <ReplayCount replayCount={replayCount} visits={visits} />
     <Text className={`w-[350px] shrink-0 whitespace-nowrap overflow-hidden overflow-ellipsis text-xl font-bold ${good ? 'text-[#9e78c0]' : 'text-[#333]'}`}>{title}</Text>
     <Text className={'w-[150px] text-sm text-end text-[#777]'}>{formatTimeAgo(createAt)}</Text>

@@ -1,7 +1,7 @@
 import {View} from "@tarojs/components";
 import {observer} from "mobx-react-lite";
 import {AtDrawer, AtIcon, AtList, AtListItem} from "taro-ui";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {categories} from "../../../constants/category";
 import {context} from "../store/store";
 import {getTopics} from "../../../api/topic";
@@ -11,7 +11,11 @@ import Taro from "@tarojs/taro";
 const Header = observer(() => {
   const [show, setShow] = useState(false)
   const store = useContext(context)
-  const {data,isLoading} = getTopics({tab:store.category.key});
+  const {data,isLoading,mutate} = getTopics({tab:store.category.key});
+
+  useEffect(() => {
+    mutate()
+  }, [store.category]);
 
   if (!data && isLoading) {
     Taro.showLoading({
