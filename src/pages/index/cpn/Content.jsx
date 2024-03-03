@@ -1,4 +1,5 @@
 import Taro from "@tarojs/taro";
+import {AtLoadMore} from "taro-ui";
 import {observer} from "mobx-react-lite";
 import {useContext, useEffect, useState} from "react";
 import {View,ScrollView} from "@tarojs/components";
@@ -10,7 +11,9 @@ const Content = observer(() => {
   const store = useContext(context)
   const [refresh, setRefresh] = useState(false)
   // const {data,mutate} = getTopics({tab:store.category.key});
-  const {data:pages,size,setSize,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
+  const {data:pages,size,setSize,isLoading,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
+
+  console.log(pages)
 
   const [screenHeight, setScreenHeight] = useState(0);
 
@@ -32,7 +35,7 @@ const Content = observer(() => {
     setRefresh(false); // 刷新完成后将 refresh 设置为 false
   }
 
-  return <View className={'h-full'}>
+  return <View>
     <ScrollView
       scrollY
       style={{ height: `${screenHeight}px` }}
@@ -47,6 +50,10 @@ const Content = observer(() => {
       {pages?.map((list,index)=>{
         return <TopicList key={index} topics={list.data} />
       })}
+      <AtLoadMore
+        className={`${isLoading ? '' : 'visible'}`}
+        status={'loading'}
+      />
     </ScrollView>
   </View>
 })
