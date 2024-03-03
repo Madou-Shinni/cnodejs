@@ -11,7 +11,7 @@ const Index =  () => {
   })
 
   return (
-    <View className='index pt-[80px]'>
+    <View className='index'>
       <Header />
       <Content/>
     </View>

@@ -23,7 +23,7 @@ const Header = observer(() => {
     store.setCategory(v)
   }
 
-  return <>
+  return <View className={'h-[80px]'}>
     <View className={'fixed left-0 top-0 right-0 z-[11] bg-[rgba(247,248,249,0.97)] flex items-center justify-between w-full h-[80px] leading-[80px]'}>
       <AtIcon value={'bullet-list ml-[40px]'} size={24} onClick={onShow} />
       <View className={'text-m'}>{store.category.label}</View>
@@ -41,7 +41,7 @@ const Header = observer(() => {
         ))}
       </AtList>
     </AtDrawer>
-  </>
+  </View>
 })
 
 export default Header

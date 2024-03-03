@@ -1,5 +1,6 @@
+import Taro from "@tarojs/taro";
 import {observer} from "mobx-react-lite";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {View,ScrollView} from "@tarojs/components";
 import {context} from "../store/store";
 import {getTopicsInfinite} from "../../../api/topic";
@@ -10,6 +11,15 @@ const Content = observer(() => {
   const [refresh, setRefresh] = useState(false)
   // const {data,mutate} = getTopics({tab:store.category.key});
   const {data:pages,size,setSize,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
+
+  const [screenHeight, setScreenHeight] = useState(0);
+
+  useEffect(() => {
+    // 获取屏幕高度
+    const res = Taro.getSystemInfoSync();
+    setScreenHeight(res.screenHeight);
+  }, []);
+
   const onScrollToLower = async () => {
     if (isValidating) return
     await setSize(size+1)
@@ -22,10 +32,10 @@ const Content = observer(() => {
     setRefresh(false); // 刷新完成后将 refresh 设置为 false
   }
 
-  return <View>
+  return <View className={'h-full'}>
     <ScrollView
       scrollY
-      style={{ height: '100vh' }}
+      style={{ height: `${screenHeight}px` }}
       scrollWithAnimation
       lowerThreshold={50}
       upperThreshold={50}
