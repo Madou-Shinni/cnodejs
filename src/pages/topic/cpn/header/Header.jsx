@@ -1,5 +1,6 @@
 import {Text, View} from "@tarojs/components";
 import Taro from "@tarojs/taro";
+import {AtDivider} from "taro-ui";
 import {getTopic} from "../../../../api/topic";
 import formatTimeAgo from "../../../../utils/time";
 import styles from './Header.module.less'
@@ -16,6 +17,7 @@ const Header = () => {
       <Text className={`${styles['info-item']} text-sm text-[#838383]`}>{data?.data.visit_count} 次浏览</Text>
       <Text className={`${styles['info-item']} text-sm text-[#838383]`}>来自 {data?.data.tab}</Text>
     </View>
+    <AtDivider content='' />
   </View>
 }
 

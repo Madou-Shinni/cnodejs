@@ -2,6 +2,7 @@ import Taro from "@tarojs/taro";
 import {View} from "@tarojs/components";
 import Header from "./cpn/header/Header";
 import {getTopic} from "../../api/topic";
+import Content from "./cpn/content/Content";
 
 const Index = () => {
   const {id} = Taro.getCurrentInstance().router.params
@@ -19,6 +20,7 @@ const Index = () => {
 
   return <View>
     <Header />
+    <Content/>
   </View>
 }
 
