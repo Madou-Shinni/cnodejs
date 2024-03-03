@@ -23,3 +23,10 @@ export const getTopicsInfinite = (data) => {
     method: 'get',
   })
 }
+
+export const getTopic = (id) => {
+  return useTaroRequest({
+    url: `/topic/${id}`,
+    method: 'get',
+  })
+}

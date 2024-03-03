@@ -1,15 +1,15 @@
 import {observer} from "mobx-react-lite";
-import React, {useContext, useState} from "react";
+import {useContext, useState} from "react";
+import {View,ScrollView} from "@tarojs/components";
 import {context} from "../store/store";
 import {getTopicsInfinite} from "../../../api/topic";
-import {View,ScrollView} from "@tarojs/components";
 import TopicList from "../../../components/TopicList";
 
 const Content = observer(() => {
   const store = useContext(context)
   const [refresh, setRefresh] = useState(false)
   // const {data,mutate} = getTopics({tab:store.category.key});
-  const {data:pages,size,setSize,isLoading,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
+  const {data:pages,size,setSize,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
   const onScrollToLower = async () => {
     if (isValidating) return
     await setSize(size+1)
@@ -35,7 +35,7 @@ const Content = observer(() => {
       onRefresherRefresh={handleRefresh}
     >
       {pages?.map((list,index)=>{
-        return <TopicList topics={list.data} />
+        return <TopicList key={index} topics={list.data} />
       })}
     </ScrollView>
   </View>
