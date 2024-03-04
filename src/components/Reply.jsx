@@ -1,8 +1,36 @@
 import Taro from "@tarojs/taro";
-import {RichText, Text, View} from "@tarojs/components";
-import {AtAvatar} from "taro-ui";
+import {RichText, Text, View,Input} from "@tarojs/components";
+import {AtAvatar, AtIcon} from "taro-ui";
+import {useState} from "react";
 import formatTimeAgo from "../utils/time";
 import {buildReplyTree} from "../utils/build_reply";
+
+const ReplyInput = ({className}) => {
+
+  const [focus, setFocus] = useState(false)
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+
+  const handleFocus = (e) => {
+    setFocus(true)
+  };
+
+  const handleBlur = (e) => {
+    setFocus(false)
+    setKeyboardHeight(e.detail.height)
+  };
+
+  return <View className={`flex items-start gap-[10px] fixed left-0 bottom-0 right-0 h-[200px] bg-[#dadde1] max pt-2 pb-[50px] px-3 ${className}`} style={{'mar-gin': `${keyboardHeight}px`}}>
+    <View className={`w-full rounded bg-white p-2`}>
+      <Input
+        type="text"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder="Enter text..."
+      />
+    </View>
+    <AtIcon value={'edit'} />
+  </View>
+}
 
 const ReplyContent = ({id,author,avatar,createAt,content}) => {
   const handleReply = () => {
@@ -29,7 +57,6 @@ const Reply = ({replies}) => {
 
   // 将replies解析为两层型 如果 replies 为 undefined 或者 null，则设置为空数组
   const newReplies = buildReplyTree(replies || []);
-  console.log(newReplies)
 
   const showMore = () => {
     Taro.showToast({
@@ -60,6 +87,7 @@ const Reply = ({replies}) => {
         }
       </View>
     ))}
+    <ReplyInput />
   </View>
 }
 

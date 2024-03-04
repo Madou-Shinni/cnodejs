@@ -16,8 +16,6 @@ const Index = () => {
     Taro.hideLoading()
   }
 
-  console.log(data)
-
   return <View>
     <Header />
     <Content/>

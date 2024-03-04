@@ -13,8 +13,6 @@ const Content = observer(() => {
   // const {data,mutate} = getTopics({tab:store.category.key});
   const {data:pages,size,setSize,isLoading,isValidating,mutate} = getTopicsInfinite({tab:store.category.key});
 
-  console.log(pages)
-
   const [screenHeight, setScreenHeight] = useState(0);
 
   useEffect(() => {
