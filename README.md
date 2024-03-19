@@ -1,6 +1,6 @@
 ## taro3 cnodejs
 
-## 技术湛
+## 技术栈
 
 1. [x] taro3.6.23
 2. [x] swr + Taro request
